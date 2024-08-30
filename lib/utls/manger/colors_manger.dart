@@ -10,4 +10,7 @@ class ColorsManger {
     Color(0xffDEB65B),
     Color(0xffCC9C40),
   ];
+  static const List<double>stops=[
+    0,.34,.61,1
+  ];
 }

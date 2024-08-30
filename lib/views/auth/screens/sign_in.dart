@@ -3,45 +3,38 @@ import 'package:elwaset_elaqary_new/utls/extintion.dart';
 import 'package:elwaset_elaqary_new/utls/manger/fonts_manger.dart';
 import 'package:elwaset_elaqary_new/utls/widget/base_widget.dart';
 import 'package:elwaset_elaqary_new/utls/widget/text_form_widget.dart';
-import 'package:elwaset_elaqary_new/views/auth/screens/sign_in.dart';
+import 'package:elwaset_elaqary_new/views/auth/screens/sign_up.dart';
+import 'package:elwaset_elaqary_new/views/home_layout/screen/home_layout.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utls/manger/assets_manger.dart';
 import '../../../utls/manger/colors_manger.dart';
 import '../../../utls/widget/button_auth.dart';
-import '../../home_layout/screen/home_layout.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignInState extends State<SignIn> {
   late TextEditingController phoneNumber;
-  late TextEditingController emailAddress;
   late TextEditingController password;
-  late TextEditingController confirmPassword;
   String codeCountry = "+2";
   bool isObservable = false;
 
   @override
   void initState() {
     phoneNumber = TextEditingController();
-    emailAddress = TextEditingController();
     password = TextEditingController();
-    confirmPassword = TextEditingController();
 
     super.initState();
   }
-  @override
+@override
   void dispose() {
-    phoneNumber.dispose();
-    emailAddress.dispose();
-    password.dispose();
-    confirmPassword.dispose();
-    super.dispose();
+  phoneNumber.dispose();
+  password.dispose();    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -100,9 +93,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 colors: ColorsManger.linerColor,
                                 stops: ColorsManger.stops)),
                         child: Text(
-                          "إنشاء حساب",
+                          "تسجيل الدخول",
                           style: FontsManger.largeFont(context).copyWith(
-                              color: ColorsManger.mainColor, fontSize: 13),
+                              color: ColorsManger.mainColor, fontSize: 12),
                         ),
                       ),
                     ],
@@ -142,20 +135,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                TextFormWidget(
-                  controller: emailAddress,
-                  isFilled: true,
-                  filledColor: Colors.black.withOpacity(.24),
-                  hint: "أكتب البريد الإلكترونى هنا...",
-                  suffix: Text(
-                    "إختيارى",
-                    style: FontsManger.mediumFont(context)
-                        .copyWith(color: Colors.white, fontSize: 12),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
                 Text(
                   "كلمة المرور",
                   style: FontsManger.mediumFont(context)
@@ -182,36 +161,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           color: Colors.white,
                           size: 20,
                         ))),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormWidget(
-                    controller: confirmPassword,
-                    isFilled: true,
-                    filledColor: Colors.black.withOpacity(.24),
-                    hint: "أكتب كلمة المرور مرة اخرى ...",
-                    suffixActive: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isObservable = !isObservable;
-                          });
-                        },
-                        icon: Icon(
-                          isObservable
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          color: Colors.white,
-                          size: 20,
-                        ))),
+
                 const SizedBox(
                   height: 60,
                 ),
-                 InkWell(
-                   onTap: (){
-                     navigatorWid(page: const HomeLayout(), context: context,returnPage: false);
-
-                   },
-                   child: Center(
+                InkWell(
+                  onTap: (){
+                    navigatorWid(page: const HomeLayout(), context: context,returnPage: false);
+                  },
+                  child: Center(
                     child: ButtonAuth(
                       height: 50,
                       width: 150,
@@ -225,22 +183,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Row(
                         children: [
                           Image.asset("assets/images/arrow.png",width: 20,height: 20,),
-                   SizedBox(width: 10,),
-                          Text("إنشاء حساب",style: FontsManger.mediumFont(context).copyWith(color: Colors.white,fontSize: 14),),
+                          const SizedBox(width: 5,),
+                          Text("تسجيل الدخول",style: FontsManger.mediumFont(context).copyWith(color: Colors.white,fontSize: 14),),
                         ],
                       ),
                       childAlignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 10),
                     ),
-                                   ),
-                 ),
-                const SizedBox(
-                  height: 35,
+                  ),
+                ),
+                 SizedBox(
+                  height:context.height*.1 ,
                 ),
                 Center(child: TextButton(onPressed: (){
-                  navigatorWid(page: SignIn(), context: context,returnPage: false);
-                }, child: Text("انا لدى حساب بالفعل",style: FontsManger.mediumFont(context).copyWith(color: Colors.white,fontSize: 14),)))
+                  navigatorWid(page: const SignUpScreen(), context: context,returnPage: false);
+
+                }, child: Text("انا ليس لدى حساب ",style: FontsManger.mediumFont(context).copyWith(color: Colors.white,fontSize: 14),)))
               ],
             ),
           )

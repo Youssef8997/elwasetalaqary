@@ -15,7 +15,7 @@ ThemeData lightTheme(BuildContext context) => ThemeData(
         centerTitle: true,
         elevation: 0,
         systemOverlayStyle: SystemUiOverlayStyle(
-            systemNavigationBarColor: Colors.white,
+            systemNavigationBarColor: ColorsManger.mainColor,
             systemNavigationBarIconBrightness: Brightness.dark,
             statusBarColor: Colors.transparent,
             statusBarIconBrightness: Brightness.light,

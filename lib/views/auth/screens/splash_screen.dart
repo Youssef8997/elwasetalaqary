@@ -1,9 +1,12 @@
 import 'package:elwaset_elaqary_new/utls/extintion.dart';
 import 'package:elwaset_elaqary_new/utls/manger/colors_manger.dart';
 import 'package:elwaset_elaqary_new/utls/manger/fonts_manger.dart';
+import 'package:elwaset_elaqary_new/utls/widget/base_widget.dart';
+import 'package:elwaset_elaqary_new/views/auth/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../helper/shered_prefrince_helper.dart';
 import '../../../utls/manger/assets_manger.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,6 +17,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     .copyWith(color: Colors.white, fontSize: 16),
               ),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               SizedBox(
                 width: context.width * .75,
@@ -67,6 +71,25 @@ class _SplashScreenState extends State<SplashScreen> {
                   textAlign: TextAlign.center,
                 ),
               ),
+              const SizedBox(
+                height: 150,
+              ),
+           InkWell(
+             onTap: (){
+               SharedPreference.setDate(key: "splash", value: true);
+
+               navigatorWid(page: const SignUpScreen(), context: context,returnPage: false);
+             },
+             child: Container(
+               width: 50,
+               height: 50,
+               decoration: const BoxDecoration(
+                 image: DecorationImage(
+                   image: AssetImage("assets/images/Frame.png")
+                 )
+               ),
+             ),
+           )
             ],
           )
         ],
